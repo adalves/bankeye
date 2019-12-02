@@ -1,0 +1,38 @@
+﻿use sistemaBancario
+
+db.banco.find( {
+	nm_banco: "Banco do Brasil",
+} ).first()
+
+
+db.cliente.find( {
+	cpf: "12345678901",
+} ).first()
+
+db.conta.find( {
+	numero: 123654,
+} ).first()
+
+db.emprestimo.find( {
+	_id: 1,
+} ).first()
+
+db.moeda.find( {
+	pais: "Brasil",
+} ).first()
+
+db.parcela.find( {
+	_id: 1,
+} ).first()
+
+db.poupanca.find( {
+	_id: 1,
+} ).first()
+
+db.poupanca_historico.find( {
+	_id: 2,
+} ).first()
+
+db.selic.find( {
+	_id: 1,
+} ).first()
