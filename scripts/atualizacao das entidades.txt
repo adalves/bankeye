@@ -1,0 +1,73 @@
+﻿use sistemaBancario
+
+db.banco.updateOne(
+   { _id: 1 },
+   {
+     $set: { "vl_taxa": 20.00 },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.cliente.updateOne(
+   { _id: 1 },
+   {
+     $set: { "cidade": "Balneario Camboriu" },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.conta.updateOne(
+   { _id: 1 },
+   {
+     $set: { "senha": "321654" },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.emprestimo.updateOne(
+   { _id: 1 },
+   {
+     $set: { "data": "21/10/2018" },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.moeda.updateOne(
+   { _id: 1 },
+   {
+     $set: { "cotacao": 5.00 },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.parcela.updateOne(
+   { _id: 1 },
+   {
+     $set: { "vencimento": "11/11/2019" },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.poupanca.updateOne(
+   { _id: 1 },
+   {
+     $set: { "valor": 600.00 },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.poupanca_historico.updateOne(
+   { _id: 1 },
+   {
+     $set: { "valor": 300.00 },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.selic.updateOne(
+   { _id: 1 },
+   {
+     $set: { "tx_selic": 10.00 },
+     $currentDate: { lastModified: true }
+   }
+)
