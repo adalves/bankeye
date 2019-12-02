@@ -1,0 +1,15 @@
+﻿use sistemaBancario
+
+db.banco.deleteMany({ moeda_id: 1 })
+db.cliente.deleteOne({ nome: "Gerosvaldo" })
+db.conta.deleteOne({ numero: 123654 })
+db.emprestimo.deleteOne({ _id: 1 })
+db.moeda.deleteOne({ pais: "Brasil" })
+db.parcela.deleteOne({ _id: 1 })
+db.parcela.deleteOne({ _id: 2 })
+db.parcela.deleteOne({ _id: 3 })
+db.poupanca.deleteOne({ _id: 1 })
+db.poupanca_historico.deleteOne({ _id: 1 })
+db.poupanca_historico.deleteOne({ _id: 2 })
+db.poupanca_historico.deleteOne({ _id: 3 })
+db.selic.deleteOne({ _id: 1 })
