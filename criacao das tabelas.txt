@@ -1,0 +1,110 @@
+﻿use sistemaBancario
+
+db.conta.insertOne({
+	_id: 1,
+	cliente_id: 1,
+	banco_id: 1,
+	tributos_ids: [
+		1,
+		2,
+		3,
+	],
+	parcelas_ids: [
+		1,
+		2,
+	],
+	tipo_conta: "Conta Pessoal",
+	senha: "123456",
+	nr_conta: 123654,
+	vl_saldo: 666.66,
+})
+
+db.cartao.insertOne({
+	_id: 1,
+	conta_id: 1,
+	nr_cartao: 123456789,
+	nr_agencia: 1234,
+	cod_iden: 987,
+	dt_validade: '06-15-2021',
+	tipo_cartao: "credito",
+	ie_internac: "nacional",
+	nm_marca: "Visa"
+})
+
+db.moeda.insertOne({
+	_id: 1,
+	nm_moeda: "Real",
+	vl_cotacao: 4.20,
+	nm_pais: "Brasil",
+})
+
+db.cliente.insertOne({
+	_id: 1,
+	nm_cliente: "Gerosvaldo",
+	cpf: "123.456.789-01",
+	nm_estado: "Santa Catarina",
+	nm_cidade: "Blumenau",
+	nm_pais: "Brasil",
+	telefone: "91334596",
+	cd_rg: "2977269",
+	dt_nascimento: '05-16-1997',
+})
+
+db.tributos.insertMany([
+	{
+		_id: 1,
+		nm_tributo: "IOF Operação Financeira",
+		vl_base_calculo: 1.5,
+		vl_taxa: 0.53,
+		vl_tributo: 0.23,
+	},
+	{
+		_id: 2,
+		nm_tributo: "Cobrança de IOF",
+		vl_base_calculo: 1.8,
+		vl_taxa: 0.90,
+		vl_tributo: 0.76,
+	},
+	{
+		_id: 3,
+		nm_tributo: "IOF uso de limite especial",
+		vl_base_calculo: 2.33,
+		vl_taxa: 1.13,
+		vl_tributo: 0.50,
+	},
+])
+
+db.banco.insertOne({
+	_id: 1,
+	nm_banco: "Banco do Brasil",
+	cd_banco: 0101,
+	vl_taxa: 9.80,
+	moeda_id: 1,
+})
+
+db.parcelas.insertMany([
+	{
+		_id: 1,
+		produto_id: 1,
+		juro_id: 1,
+		vl_parcela: 399.00,
+		tipo_parcela: "P",
+	},
+	{
+		_id: 2,
+		produto_id: 1,
+		juro_id: 1,
+		vl_parcela: 350.00,
+		tipo_parcela: "P",
+	},
+])
+
+
+db.juro.insertOne({
+	_id: 1,
+	nm_juro: "Juro simples",
+	vl_presente: 10,
+	vl_taxa_juro: 3.13,
+	nr_periodo: 1,
+	vl_futuro: 12,
+})
