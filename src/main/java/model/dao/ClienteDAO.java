@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package model.dao;
 
 import com.mongodb.client.MongoCollection;
 import mongo_client.Mongo;
@@ -11,7 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import javax.swing.JOptionPane;
 import org.bson.Document;
-import model.Cliente;
+import model.domain.Cliente;
 
 /**
  *
@@ -30,6 +30,8 @@ public class ClienteDAO {
         if (cliente.getNome().length() == 0) {
             validacao += "O nome do cliente está incorreto.\n";
         }
+        
+        System.out.println(Long.toString(cliente.getCpf()).length());
         
         if (Long.toString(cliente.getCpf()).length() != 11) {
             validacao += "O cpf esta incorreto.\n";
@@ -71,7 +73,7 @@ public class ClienteDAO {
     }
     
     public Cliente requestCliente(long cpf) {
-        System.out.println(getClientes().find(Filters.eq("cpf", cpf)).first().toJson());
+        System.out.println(getClientes().find(Filters.eq("cpf", cpf)).first());
                 
         return null;
     }

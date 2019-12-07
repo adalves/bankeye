@@ -3,27 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.loggedout;
 
 import com.mongodb.client.MongoClient;
-import control.ClienteDAO;
-import control.ContaDAO;
+import model.dao.ClienteDAO;
+import model.dao.ContaDAO;
 import control.Globals;
-import model.Banco;
-import model.Cliente;
-import model.Conta;
+import model.domain.Banco;
+import model.domain.Cliente;
+import model.domain.Conta;
 import mongo_client.Mongo;
 
 /**
  *
  * @author Jaison Robson Gusava
  */
-public class Login extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginView() {
         initComponents();
     }
 
@@ -344,6 +344,8 @@ public class Login extends javax.swing.JFrame {
         
         Boolean criouCliente = clientedao.criar(cliente);
         
+        System.out.println(cliente.getCpf());
+        
         clientedao.requestCliente(cliente.getCpf());
         
         if (criouCliente) {
@@ -384,14 +386,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
     }
 

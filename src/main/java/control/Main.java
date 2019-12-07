@@ -12,8 +12,10 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.Document;
-import view.Login;
+import view.loggedout.LoginView;
 
 /**
  *
@@ -31,6 +33,9 @@ public class Main {
         MongoDatabase db = client.getDatabase("sistemaBancario");
         
         MongoCollection<Document> moedas = db.getCollection("moedas");
+        
+        //Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
+        //mongoLogger.setLevel(Level.SEVERE);
         
         moedas.insertOne(
             new Document("_id", 1)
@@ -59,7 +64,7 @@ public class Main {
         
         bancos.insertMany(bancosDocs);
         
-        new Login().setVisible(true);
+        new LoginView().setVisible(true);
     }
     
 }

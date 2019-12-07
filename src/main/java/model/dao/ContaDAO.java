@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package model.dao;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javax.swing.JOptionPane;
-import model.Conta;
+import model.domain.Conta;
 import mongo_client.Mongo;
 import org.bson.Document;
 
