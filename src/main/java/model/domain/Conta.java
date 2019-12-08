@@ -19,11 +19,11 @@ public class Conta {
     private int emprestimoId;
     private String senha;
     private int numero;
-    private int saldo;
+    private double saldo;
     
     public Conta() {}
 
-    public Conta(int clienteId, int bancoId, int emprestimoId, String senha, int numero, int saldo) {
+    public Conta(int clienteId, int bancoId, int emprestimoId, String senha, int numero, double saldo) {
         this.clienteId = clienteId;
         this.bancoId = bancoId;
         this.emprestimoId = emprestimoId;
@@ -80,11 +80,11 @@ public class Conta {
         this.numero = numero;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
     

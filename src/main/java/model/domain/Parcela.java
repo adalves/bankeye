@@ -18,16 +18,18 @@ public class Parcela {
     private double juro;
     private double total;
     private String vencimento;
+    private boolean pago;
 
     public Parcela() {
     }
 
-    public Parcela(int id, double vlParcela, double vlJuros, double vlTotalParcela, String dtVencimento) {
+    public Parcela(int id, double vlParcela, double vlJuros, double vlTotalParcela, String dtVencimento, boolean pago) {
         this.id = id;
         this.valor = vlParcela;
         this.juro = vlJuros;
         this.total = vlTotalParcela;
         this.vencimento = dtVencimento;
+        this.pago = pago;
     }
 
     public int getId() {
@@ -69,11 +71,21 @@ public class Parcela {
     public void setVencimento(String vencimento) {
         this.vencimento = vencimento;
     }
+
+    public boolean isPago() {
+        return pago;
+    }
+
+    public void setPago(boolean pago) {
+        this.pago = pago;
+    }
+    
     
     public static final DBObject toDBObject(Parcela parcela) {
         BasicDBObject result = new BasicDBObject("valor", parcela.getValor())
                 .append("juro", parcela.getJuro())
-                .append("total", parcela.getTotal());
+                .append("total", parcela.getTotal())
+                .append("pago", parcela.isPago());
         
         if (parcela.getId() != -1) {
             result.append("_id", parcela.getId());
