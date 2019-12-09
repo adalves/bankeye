@@ -1,4 +1,4 @@
-﻿use sistemaBancario
+use sistemaBancario
 
 db.banco.find( {
 	nm_banco: "Banco do Brasil",
@@ -36,3 +36,93 @@ db.poupanca_historico.find( {
 db.selic.find( {
 	_id: 1,
 } ).first()
+
+db.poupanca_historico.find( {
+	poupanca_id: { $gt: 1}
+} )
+
+db.poupanca.find({
+	conta_id: { $gt: 1}
+})
+
+db.parcela.find({
+	emprestimo_id: { $gt: 1}
+})
+
+db.emprestimo.find({
+	conta_id: { $gt: 1}
+})
+
+db.selic.find({
+	dt_inicio_vigencia: { $gte ISODate(2019-10-01T00:00:00.000Z)},
+	dt_fim_vigencia: { $lt ISODate(2019-10-31T00:00:00.000Z)}
+})
+
+//Junções com subconsultas utilizando o MongoDB
+db.parcelas.aggregate([
+    {
+      $lookup:
+        {
+          from: "emprestimo",
+          localField: "id",
+          foreignField: "emprestimo_id",
+          as: "parcelas_emprestimo"
+        }
+   }
+])
+
+db.poupanca_historico.aggregate([
+    {
+      $lookup:
+        {
+          from: "poupanca",
+          localField: "id",
+          foreignField: "poupanca_id",
+          as: "poupanca_historico"
+        }
+   }
+])
+
+db.poupanca_historico.aggregate([
+    {
+      $lookup:
+        {
+          from: "poupanca",
+          localField: "id",
+          foreignField: "poupanca_id",
+          as: "poupanca_historico"
+        }
+   }
+])
+
+//consultas agrupadas
+//Retorna o número de contas nos bancos
+
+db.conta.aggregate([
+    {"$group" : {_id:"$banco_id", count:{$sum:1}}}
+])
+
+//Traz as cidades com mais clientes
+db.cliente.aggregate([
+    {"$group" : {_id:"$cidade", count:{$sum:1}}},
+    {$sort: {"count": -1}}
+])
+
+//
+db.cliente.aggregate([
+    {$group : {_id:"$nascimento", count:{$sum:1}}},
+    {$match : {"$nascimento": {$gte: ISODate(1990-01-01T00:00:00.000Z)}}}
+])
+
+//Indices
+//O mongoDB cria automáticamente um indice para o campo "_id"
+
+db.cliente.createIndex({'cpf', 1},{unique : true}) //só existe apenas um CPF por pessoa
+
+db.conta.createIndex({{'numero', 1}, {unique: true}}, {'banco_id', 1}, {'moeda_id', 1}, {'cliente_id', 1}) //só pode existir apenas um número de conta, criados indices para os campos que "referenciam" outras entidades
+
+db.parcelas.createIndex({'emprestimo_id', 1}) //toda parcela está vinculada a um empréstimo
+
+db.poupanca.createIndex({'conta_id', 1}) //toda poupança está vinculada a uma conta
+
+db.poupanca_historico.createIndex({'poupanca_id', 1}) //todo histórico de uma poupança terá uma poupança cadastrada.
