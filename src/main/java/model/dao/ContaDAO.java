@@ -27,20 +27,28 @@ public class ContaDAO {
     public boolean criar(Conta conta) {
         String validacao = "";
         
+        if (conta.getId() == -1) {
+            validacao += "O Id da conta está incorreto.\n";
+        }        
+        
+        if (conta.getClienteId() == -1) {
+            validacao += "O Id do cliente está incorreto.\n";
+        }        
+        
+        if (conta.getBancoId() == -1) {
+            validacao += "O Id do banco está incorreto.\n";
+        }        
+        
+        if (conta.getEmprestimoId() == -1) {
+            validacao += "O Id do empréstimo está incorreto.\n";
+        }        
+        
         if (conta.getSenha().length() == 0) {
             validacao += "Senha está incorreta.\n";
         }        
         
-        if (Integer.toString(conta.getBancoId()).length() == 0) {
-            validacao += "Banco esta incorreto.\n";
-        }
-        
-        if (Integer.toString(conta.getClienteId()).length() == 0) {
-            validacao += "Cliente esta incorreto.\n";
-        }
-        
-        if (Integer.toString(conta.getNumero()).length() == 0) {
-            validacao += "A conta esta incorreta.\n";
+        if (conta.getNumero() == 0) {
+            validacao += "O número da conta está incorreto.\n";
         }
         
         if ("".equals(validacao)) {

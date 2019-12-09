@@ -27,6 +27,10 @@ public class ClienteDAO {
     public boolean criar(Cliente cliente) {
         String validacao = "";
 
+        if (cliente.getId() == -1) {
+            validacao += "O Id do cliente está incorreto.\n";
+        }
+
         if (cliente.getNome().length() == 0) {
             validacao += "O nome do cliente está incorreto.\n";
         }
